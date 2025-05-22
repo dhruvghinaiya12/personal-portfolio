@@ -17,7 +17,7 @@ const Hero = () => {
                 </span>
               </h1>
               <h2 className="text-xl md:text-2xl font-medium text-gray-600 dark:text-gray-300 mt-4">
-                Full-Stack Web Developer
+                MERN Stack Web Developer
               </h2>
             </div>
             
