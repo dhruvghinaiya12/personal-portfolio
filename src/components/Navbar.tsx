@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 
 interface NavbarProps {
@@ -9,15 +10,47 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  
+
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
-  
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    closeMenu();
+
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        if (href === '#') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const element = document.querySelector(href);
+          if (element) {
+            const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - 80;
+            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+          }
+        }
+      }, 100);
+    } else {
+      if (href === '#') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        }
+      }
+    }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -26,13 +59,13 @@ const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
         setIsScrolled(false);
       }
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  
+
   const navLinks = [
     { name: 'Home', href: '#' },
     { name: 'About', href: '#about' },
@@ -49,20 +82,21 @@ const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
     }`}>
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between py-4">
-          <a 
-            href="#" 
+          <a
+            href="#"
             className="text-xl font-bold text-blue-600 dark:text-blue-400"
+            onClick={(e) => handleNavClick(e, '#')}
           >
             Dhruv Ghinaiya
           </a>
           
           <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
+              <a
+                key={link.name}
                 href={link.href}
                 className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300"
-                onClick={closeMenu}
+                onClick={(e) => handleNavClick(e, link.href)}
               >
                 {link.name}
               </a>
@@ -114,11 +148,11 @@ const Navbar: React.FC<NavbarProps> = ({ toggleTheme, isDarkMode }) => {
         <div className="md:hidden bg-white dark:bg-gray-900 px-4 py-5 shadow-lg">
           <div className="flex flex-col space-y-4">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
+              <a
+                key={link.name}
                 href={link.href}
                 className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors duration-300 py-2"
-                onClick={closeMenu}
+                onClick={(e) => handleNavClick(e, link.href)}
               >
                 {link.name}
               </a>

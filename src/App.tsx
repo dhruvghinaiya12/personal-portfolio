@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -6,6 +7,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ProjectDetail from './pages/ProjectDetail';
 import { ThemeProvider, useTheme } from './utils/ThemeContext';
 
 // Add grid pattern and animations
@@ -88,9 +90,7 @@ const styles = `
   }
 `;
 
-const PortfolioApp = () => {
-  const { isDarkMode, toggleTheme } = useTheme();
-  
+const HomePage = () => {
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -113,26 +113,39 @@ const PortfolioApp = () => {
   }, []);
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
-      <style>{styles}</style>
-      <Navbar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
-      <main className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
-        <Hero />
-        <div className="scroll-animate">
-          <About />
-        </div>
-        <div className="scroll-animate">
-          <Skills />
-        </div>
-        <div className="scroll-animate">
-          <Projects />
-        </div>
-        <div className="scroll-animate">
-          <Contact />
-        </div>
-      </main>
-      <Footer />
-    </div>
+    <main className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+      <Hero />
+      <div className="scroll-animate">
+        <About />
+      </div>
+      <div className="scroll-animate">
+        <Skills />
+      </div>
+      <div className="scroll-animate">
+        <Projects />
+      </div>
+      <div className="scroll-animate">
+        <Contact />
+      </div>
+    </main>
+  );
+};
+
+const PortfolioApp = () => {
+  const { isDarkMode, toggleTheme } = useTheme();
+
+  return (
+    <Router>
+      <div className={`min-h-screen ${isDarkMode ? 'dark' : ''}`}>
+        <style>{styles}</style>
+        <Navbar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/project/:projectId" element={<ProjectDetail />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 };
 
