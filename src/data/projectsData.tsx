@@ -251,7 +251,7 @@ export const projects: Project[] = [
   },
   {
     id: 'lead-management',
-    title: 'Dr.Links - Lead Management',
+    title: 'Health Care - Lead Management',
     shortDescription: 'Healthcare referral platform with QR-based lead capture, role-based workflows, and subscription billing.',
     role: 'Built a full-stack lead capture and referral system for healthcare networks.',
     goal: 'Connect doctors with patients through a multi-role referral system with QR-based lead intake and subscription management.',
