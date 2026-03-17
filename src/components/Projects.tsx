@@ -1,6 +1,5 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Tag } from 'lucide-react';
+import { ArrowRight, ExternalLink, Github, Tag } from 'lucide-react';
 import { projects } from '../data/projectsData';
 
 const Projects = () => {
@@ -17,12 +16,16 @@ const Projects = () => {
         </div>
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className="opacity-0 animate-fade-in group"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
+          {projects.map((project, index) => {
+            const sourceUrl =
+              project.githubLinks && project.githubLinks.length > 0 ? project.githubLinks[0].url : undefined;
+
+            return (
+              <div
+                key={project.id}
+                className="opacity-0 animate-fade-in group"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
               <div className="bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.03] border border-gray-100 dark:border-gray-700 h-full flex flex-col">
                 <div className="relative h-48 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/60 z-10"></div>
@@ -62,17 +65,43 @@ const Projects = () => {
                     )}
                   </div>
 
-                  <Link
-                    to={`/project/${project.id}`}
-                    className="inline-flex items-center justify-center w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 group-hover:shadow-lg"
-                  >
-                    View Details
-                    <ArrowRight size={18} className="ml-2 transition-transform group-hover:translate-x-1" />
-                  </Link>
+                  <div className="grid grid-cols-2 gap-3">
+                    <a
+                      href={sourceUrl || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={[
+                        'inline-flex items-center justify-center w-full px-4 py-2.5 font-medium rounded-lg transition-all duration-300 whitespace-nowrap',
+                        sourceUrl
+                          ? 'bg-gray-900 hover:bg-gray-800 text-white group-hover:shadow-lg'
+                          : 'bg-gray-200 text-gray-500 cursor-not-allowed',
+                      ].join(' ')}
+                      aria-disabled={!sourceUrl}
+                      onClick={(e) => {
+                        if (!sourceUrl) e.preventDefault();
+                      }}
+                    >
+                      <Github size={16} className="mr-1.5 flex-shrink-0" />
+                      <span className="text-sm">Source Code</span>
+                      <ExternalLink size={14} className="ml-1.5 opacity-80 flex-shrink-0" />
+                    </a>
+
+  <Link
+    to={`/project/${project.id}`}
+    className="inline-flex items-center justify-center w-full px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all duration-300 group-hover:shadow-lg whitespace-nowrap"
+  >
+    <span className="text-sm">View Details</span>
+    <ArrowRight
+      size={16}
+      className="ml-1.5 flex-shrink-0 transition-transform group-hover:translate-x-1"
+    />
+  </Link>
+</div>
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

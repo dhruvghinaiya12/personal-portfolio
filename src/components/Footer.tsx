@@ -1,5 +1,5 @@
-import React from "react";
-import { Github, Linkedin, Mail, Heart } from "lucide-react";
+
+import { Github, Linkedin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,10 +9,9 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <p className="text-gray-600 dark:text-gray-400 flex items-center">
-              © {currentYear} Dhruv Ghinaiya. Learning, building & growing with{" "}
-              <Heart size={16} className="mx-1 text-red-500" /> along the
-              journey
+            <p className="text-gray-600 dark:text-gray-400">
+              © {currentYear} Dhruv Ghinaiya. Building scalable web experiences
+              with modern technologies.
             </p>
           </div>
 
@@ -34,13 +33,6 @@ const Footer = () => {
               aria-label="LinkedIn"
             >
               <Linkedin size={20} />
-            </a>
-            <a
-              href="mailto:dhruvghinaiya12@gmail.com"
-              className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
-              aria-label="Email"
-            >
-              <Mail size={20} />
             </a>
           </div>
         </div>

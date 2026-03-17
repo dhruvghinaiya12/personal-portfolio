@@ -93,6 +93,19 @@ export const projects: Project[] = [
           'UI and API-level enforcement',
           'Super Admin full control'
         ]
+      },
+      {
+        title: 'Store Operations Modules',
+        description: 'Admin modules that directly control the storefront without code changes',
+        points: [
+          'Categories: hierarchical catalog structure that drives navigation and filters',
+          'Customers: verification/activity view with filters for support & operations',
+          'Reviews: approve/search/filter reviews to control what appears on product pages',
+          'Returns: process return requests with consistent status updates',
+          'Blog: create/publish articles to drive SEO and content marketing',
+          'Announcement Bar: backend-controlled banners with priority and enable/disable rules',
+          'Manage Logo: update branding assets with live preview',
+        ]
       }
     ],
     githubLinks: [
@@ -168,6 +181,45 @@ export const projects: Project[] = [
           'Secure checkout with Razorpay',
           'Order history and tracking'
         ]
+      },
+      {
+        title: 'Individual Product Experience',
+        description: 'Dynamic product pages powered by APIs (no hardcoded content)',
+        points: [
+          'Single product API response drives title/description/variants/stock/pricing',
+          'Variant selection updates price, images, badges, and stock constraints',
+          'Rich sections: key benefits, how-to-use, why-choose-us, certifications, and FAQs',
+          '“You may also like” recommendations fetched dynamically by category (lazy-loaded)',
+          'SEO via React Helmet: per-product meta, canonical URLs, and Product schema',
+        ]
+      },
+      {
+        title: 'Cart, Checkout, and Orders',
+        description: 'API-driven cart + complete checkout flow',
+        points: [
+          'Persistent server-backed cart + slide-in cart sidebar',
+          'Cart page with quantity updates/removals backed by APIs',
+          'Checkout integrates address APIs + payment initiation + order creation',
+          'Order history list and detail pages via orders APIs',
+        ]
+      },
+      {
+        title: 'Authentication & Personalization',
+        description: 'Secure auth and user-specific UX',
+        points: [
+          'Login/signup flows with token-based protected requests',
+          'Profile + address management for faster checkout',
+          'Auth-gated actions (add to cart, reviews) with clear redirects/messaging',
+        ]
+      },
+      {
+        title: 'Content, Marketing, and Support',
+        description: 'Storefront content that stays dynamic and operational',
+        points: [
+          'Blog list + detail driven by backend data',
+          'Contact/support form connected to APIs',
+          'Announcement bar controlled by backend with priority rules',
+        ]
       }
     ],
     githubLinks: [
@@ -237,6 +289,18 @@ export const projects: Project[] = [
           'Table status updates',
           'Invoice notifications',
           'Chat-style support messages'
+        ]
+      },
+      {
+        title: 'End-to-End Operational Flow',
+        description: 'What happens from onboarding to invoicing',
+        points: [
+          'Super Admin creates restaurant, assigns plan, provisions initial Admin',
+          'Admin configures tables + menu and adds Managers',
+          'Admin generates QR codes for tables; customers scan to open branded menu',
+          'Managers open orders for tables; admins receive real-time notifications',
+          'Admin creates invoice on payment; table becomes free again',
+          'Support tickets connect Admin ↔ Super Admin with real-time chat notifications',
         ]
       }
     ],
@@ -314,6 +378,16 @@ export const projects: Project[] = [
           'Automated subscription management',
           'Payment tracking and reporting'
         ]
+      },
+      {
+        title: 'Role-Based Dashboards (How it works)',
+        description: 'Clear workflows for each role',
+        points: [
+          'PRO: network performance dashboard + QR/link sharing + leads list + follow-ups',
+          'Consultant Doctor: primary lead working queue + referral lead visibility + billing + sub-user management',
+          'Referral Doctor: QR/link + submitted leads tracking with progress visibility',
+          'Sub User: route-level permissions; only sees pages the consultant doctor enables',
+        ]
       }
     ],
     githubLinks: [
@@ -388,6 +462,44 @@ export const projects: Project[] = [
           'Media header support',
           'Campaign analytics and logs',
           'Automated scheduling with cron'
+        ]
+      },
+      {
+        title: 'WhatsApp Cloud API Setup',
+        description: 'Per-tenant credentials and long-lived token flow',
+        points: [
+          'Store credentials per tenant (wabaId/phoneNumberId/token/registered number)',
+          'Outbound calls load tenant credentials and hit Meta Graph API',
+          'Supports long-lived token generation workflow',
+        ]
+      },
+      {
+        title: 'Templates + Inbox Flow',
+        description: 'Approved templates + 1:1 inbox connected via webhooks',
+        points: [
+          'Fetch/create/delete approved templates and preview header/body/buttons',
+          'Media headers supported (image/video/document)',
+          'Socket.IO rooms per tenant for instant UI updates',
+          'Inbound webhooks insert messages + update unread flags + emit events to UI',
+          'UI enforces WhatsApp 24-hour messaging rule (templates required outside window)',
+        ]
+      },
+      {
+        title: 'Delivery Status + Opt-out',
+        description: 'Reliable delivery tracking with compliance handling',
+        points: [
+          'Webhook status updates (sent/delivered/read/failed) update DB and push to UI',
+          'Campaign logs store per-recipient messageId + status for reporting',
+          'Inbound “STOP” automatically marks contact unsubscribed to exclude from campaigns',
+        ]
+      },
+      {
+        title: 'Platform Layer (Super Admin)',
+        description: 'Plans and tenant oversight',
+        points: [
+          'Plan management (duration/price)',
+          'Admin tenant listing/search + active/expired handling',
+          'High-level counts per tenant (contacts/groups/campaigns)',
         ]
       }
     ],

@@ -45,7 +45,7 @@ const Skills = () => {
     {
       title: 'Database',
       icon: <Database size={24} className="text-blue-600" />,
-      skills: ['MongoDB', 'Mongoose', 'SQL Basics','Supabase'],
+      skills: ['MongoDB', 'Mongoose', 'SQL Basics', 'Supabase', 'Prisma ORM'],
     },
     {
       title: 'Version Control',
