@@ -55,7 +55,7 @@ const Skills = () => {
     {
       title: 'API & Tools',
       icon: <Tool size={24} className="text-blue-600" />,
-      skills: ['Postman', 'Thunder Client', 'Swagger'],
+      skills: ['Postman', 'Thunder Client', 'npm', 'Axios'],
     },
     {
       title: 'Authentication',
