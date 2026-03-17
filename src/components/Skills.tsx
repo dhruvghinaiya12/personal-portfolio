@@ -62,11 +62,7 @@ const Skills = () => {
       icon: <Lock size={24} className="text-blue-600" />,
       skills: ['JWT', 'OAuth', 'Passport.js'],
     },
-    {
-      title: 'Web Technologies',
-      icon: <Globe size={24} className="text-blue-600" />,
-      skills: ['HTTP/HTTPS', 'REST', 'WebSockets'],
-    },
+   
     {
       title: 'Data Formats',
       icon: <FileJson size={24} className="text-blue-600" />,
