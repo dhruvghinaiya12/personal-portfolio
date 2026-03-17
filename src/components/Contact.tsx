@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Send, Github, Linkedin, MapPin } from 'lucide-react';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const [formState, setFormState] = useState({
@@ -18,31 +19,51 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+ const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  // 1️⃣ Send email to you (site owner)
+  emailjs
+    .send(
+      "service_srobkx6",   
+      "template_flqkqp5", 
+      {
+        name: formState.name,
+        email: formState.email,
+        message: formState.message,
+      },
+      "SeixN21vEIWLMqNoJ"    
+    )
+    .then(
+      (result) => {
+        console.log("✅ Email sent to owner:", result.text);
+
+        return emailjs.send(
+          "service_srobkx6",   
+          "template_9iit25d",  
+          {
+            to_name: formState.name,
+            to_email: formState.email, 
+          },
+          "SeixN21vEIWLMqNoJ"
+        );
+      }
+    )
+    .then((result) => {
+      console.log("📩 Confirmation email sent to user:", result.text);
+      setSubmitMessage({ type: 'success', text: "Thank you for your message! We've also sent you a confirmation email." });
+      setFormState({ name: '', email: '', message: '' });
       setIsSubmitting(false);
-      setSubmitMessage({
-        type: 'success',
-        text: 'Thank you for your message! I\'ll get back to you soon.',
-      });
-      
-      // Reset form
-      setFormState({
-        name: '',
-        email: '',
-        message: '',
-      });
-      
-      // Clear message after 5 seconds
-      setTimeout(() => {
-        setSubmitMessage(null);
-      }, 5000);
-    }, 1500);
-  };
+
+      setTimeout(() => setSubmitMessage(null), 5000);
+    })
+    .catch((error) => {
+      console.error("❌ Error:", error.text);
+      setSubmitMessage({ type: 'error', text: "Something went wrong. Please try again later." });
+      setIsSubmitting(false);
+    });
+};
 
   return (
     <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800">

@@ -32,7 +32,7 @@ const About = () => {
             <div className="md:w-2/3">
               <div className="prose dark:prose-invert max-w-none">
                 <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg leading-relaxed">
-                  I'm a passionate Computer Engineering student with a strong foundation in full-stack development. Through my academic projects and self-directed learning, I've gained hands-on experience in building web applications using modern technologies.
+                  I'm a passionate Computer Engineering student with a strong foundation in mern stack development. Through my academic projects and self-directed learning, I've gained hands-on experience in building web applications using modern technologies.
                 </p>
                 
                 <div className="mt-8">
