@@ -102,7 +102,7 @@ const About = () => {
                      </div>
                      <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400 whitespace-nowrap">
                        <Calendar size={14} className="flex-shrink-0" />
-                       <span>Jul 2025 – Present</span>
+                       <span>March 2025 – March 2026</span>
                      </div>
                    </div>
                
