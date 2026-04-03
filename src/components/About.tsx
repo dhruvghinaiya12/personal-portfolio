@@ -106,25 +106,34 @@ const About = () => {
                      </div>
                    </div>
                
-                   {/* Description — matches resume style */}
-                   <p className="mt-4 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                     MERN Stack Developer specializing in scalable, production-grade web systems — multi-tenant SaaS, 
-                     e-commerce platforms, and real-time CRMs — with proven expertise in TypeScript, Redux Toolkit, 
-                     Next.js, Prisma, Supabase, Razorpay integration and REST API architecture.
-                   </p>
-               
-                   {/* Tech Stack Pills */}
-                   <div className="flex flex-wrap gap-2 mt-4">
-                     {['TypeScript', 'Next.js', 'Redux Toolkit', 'Prisma', 'Supabase', 'Razorpay'].map((tech) => (
-                       <span
-                         key={tech}
-                         className="px-2.5 py-0.5 text-xs font-medium bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full border border-blue-100 dark:border-blue-800"
-                       >
-                         {tech}
-                       </span>
-                     ))}
-                   </div>
-               
+               {/* Description — aligned with backend emphasis */}
+<p className="mt-4 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+  MERN Stack Developer with strong backend expertise in Node.js and Express.js, building scalable, 
+  production-grade web systems — including multi-tenant SaaS, e-commerce platforms, and real-time CRMs. 
+  Experienced in designing robust REST API architectures, along with TypeScript, Redux Toolkit, Next.js, 
+  Prisma, Supabase, and Razorpay integration.
+</p>
+
+{/* Tech Stack Pills — now reflecting backend strength */}
+<div className="flex flex-wrap gap-2 mt-4">
+  {[
+    'Node.js',
+    'Express.js',
+    'TypeScript',
+    'Next.js',
+    'Redux Toolkit',
+    'Prisma',
+    'Supabase',
+    'Razorpay'
+  ].map((tech) => (
+    <span
+      key={tech}
+      className="px-2.5 py-0.5 text-xs font-medium bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full border border-blue-100 dark:border-blue-800"
+    >
+      {tech}
+    </span>
+  ))}
+</div>
                  </div>
                </div>
                   ) : (
